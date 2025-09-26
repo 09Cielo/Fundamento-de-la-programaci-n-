@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main (){
+int a, invertido = 0, resto, c;
+
+printf ("Ingrese un numero: ");
+scanf ("%d", &a);
+
+c = a;
+
+while (a > 0){
+    resto = a % 10;
+    invertido = invertido * 10 + resto;
+    a = a / 10;
+}
+
+if (invertido == c){
+
+    printf ("El numero %d es capicua", invertido);
+}
+else{
+        printf ("El numero %d no es capicua", c);
+}
+
+
+
+return 0;
+
+}
