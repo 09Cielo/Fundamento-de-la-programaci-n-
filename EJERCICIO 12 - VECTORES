@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int vector[10] = {1, 2, 2, 3, 4, 4, 5, 6, 6, 7};
+    int n = 10;
+    
+    // Eliminar duplicados
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if(vector[i] == vector[j]) {
+                // Correr los números hacia la izquierda
+                for(int k = j; k < n - 1; k++) {
+                    vector[k] = vector[k + 1];
+                }
+                n--; // Reducir el tamaño
+                j--; // Revisar la misma posición again
+            }
+        }
+    }
+    
+    // Mostrar resultado
+    cout << "Vector sin duplicados: ";
+    for(int i = 0; i < n; i++) {
+        cout << vector[i] << " ";
+    }
+    
+    return 0;
+}
