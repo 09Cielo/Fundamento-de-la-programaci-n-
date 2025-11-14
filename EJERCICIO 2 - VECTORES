@@ -9,13 +9,13 @@ int main() {
     
     int numeros[cantidad];
     
-    // Pedir los números
+
     for(int i = 0; i < cantidad; i++) {
         cout << "Ingresa el numero " << (i+1) << ": ";
         cin >> numeros[i];
     }
     
-    // Encontrar el más pequeño
+
     int masPequeno = numeros[0];
     
     for(int i = 1; i < cantidad; i++) {
