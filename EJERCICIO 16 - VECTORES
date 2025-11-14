@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string alumnos[50];
+    float notas[50];
+    int cantidad = 0;
+    int opcion;
+    
+    do {
+        cout << "\n--- MENU ALUMNOS ---\n";
+        cout << "1. Ingresar alumno y nota\n";
+        cout << "2. Listar alumnos\n";
+        cout << "3. Ordenar alfabeticamente\n";
+        cout << "4. Mejor nota\n";
+        cout << "5. Promedio de notas\n";
+        cout << "6. Salir\n";
+        cout << "Opcion: ";
+        cin >> opcion;
+        
+        switch(opcion) {
+            case 1:
+                if(cantidad < 50) {
+                    cout << "Nombre del alumno: ";
+                    cin >> alumnos[cantidad];
+                    cout << "Nota: ";
+                    cin >> notas[cantidad];
+                    cantidad++;
+                    cout << "Alumno agregado!\n";
+                } else {
+                    cout << "No hay espacio!\n";
+                }
+                break;
+                
+            case 2:
+                if(cantidad == 0) {
+                    cout << "No hay alumnos registrados!\n";
+                } else {
+                    cout << "\nLISTA DE ALUMNOS:\n";
+                    for(int i = 0; i < cantidad; i++) {
+                        cout << alumnos[i] << " - " << notas[i] << endl;
+                    }
+                }
+                break;
+                
+            case 3:
+                if(cantidad == 0) {
+                    cout << "No hay alumnos registrados!\n";
+                } else {
+                    for(int i = 0; i < cantidad - 1; i++) {
+                        for(int j = i + 1; j < cantidad; j++) {
+                            if(alumnos[i] > alumnos[j]) {
+                                string tempAlum = alumnos[i];
+                                alumnos[i] = alumnos[j];
+                                alumnos[j] = tempAlum;
+                                
+                                float tempNota = notas[i];
+                                notas[i] = notas[j];
+                                notas[j] = tempNota;
+                            }
+                        }
+                    }
+                    cout << "Ordenado alfabeticamente!\n";
+                }
+                break;
+                
+            case 4:
+                if(cantidad == 0) {
+                    cout << "No hay alumnos registrados!\n";
+                } else {
+                    float mejor = notas[0];
+                    string mejorAlumno = alumnos[0];
+                    for(int i = 1; i < cantidad; i++) {
+                        if(notas[i] > mejor) {
+                            mejor = notas[i];
+                            mejorAlumno = alumnos[i];
+                        }
+                    }
+                    cout << "Mejor nota: " << mejorAlumno << " - " << mejor << endl;
+                }
+                break;
+                
+            case 5:
+                if(cantidad == 0) {
+                    cout << "No hay alumnos registrados!\n";
+                } else {
+                    float suma = 0;
+                    for(int i = 0; i < cantidad; i++) {
+                        suma += notas[i];
+                    }
+                    cout << "Promedio de notas: " << (suma / cantidad) << endl;
+                }
+                break;
+                
+            case 6:
+                cout << "Adios!\n";
+                break;
+                
+            default:
+                cout << "Opcion invalida!\n";
+        }
+        
+    } while(opcion != 6);
+    
+    return 0;
+}
