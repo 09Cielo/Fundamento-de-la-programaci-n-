@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Cuantos numeros vas a ingresar? ";
+    cin >> n;
+    
+    int vector[n];
+    
+    cout << "Ingresa " << n << " numeros:\n";
+    for(int i = 0; i < n; i++) {
+        cout << "Numero " << (i+1) << ": ";
+        cin >> vector[i];
+    }
+    
+    // Ordenar ascendente
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if(vector[i] > vector[j]) {
+                int temp = vector[i];
+                vector[i] = vector[j];
+                vector[j] = temp;
+            }
+        }
+    }
+    
+    cout << "Vector ordenado: ";
+    for(int i = 0; i < n; i++) {
+        cout << vector[i] << " ";
+    }
+    
+    return 0;
+}
