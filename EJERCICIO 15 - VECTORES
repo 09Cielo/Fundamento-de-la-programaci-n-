@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Cuantos alumnos vas a ingresar? ";
+    cin >> n;
+    
+    string alumnos[n];
+    float notas[n];
+    
+    cout << "Ingresa los datos:\n";
+    for(int i = 0; i < n; i++) {
+        cout << "Alumno " << (i+1) << " - Nombre: ";
+        cin >> alumnos[i];
+        cout << "Alumno " << (i+1) << " - Nota: ";
+        cin >> notas[i];
+    }
+    
+    // Ordenar descendente
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if(notas[i] < notas[j]) {
+                float tempNota = notas[i];
+                notas[i] = notas[j];
+                notas[j] = tempNota;
+                
+                string tempAlum = alumnos[i];
+                alumnos[i] = alumnos[j];
+                alumnos[j] = tempAlum;
+            }
+        }
+    }
+    
+    cout << "\nTRES MEJORES NOTAS:\n";
+    for(int i = 0; i < 3 && i < n; i++) {
+        cout << (i+1) << ". " << alumnos[i] << " - " << notas[i] << endl;
+    }
+    
+    return 0;
+}
